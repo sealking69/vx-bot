@@ -19,9 +19,9 @@ from ai import chat as ai_chat, get_client
 
 
 # ---- 配置 ----
-WECHAT_TOKEN = os.environ["WECHAT_TOKEN"]
-WECHAT_APP_ID = os.environ["WECHAT_APP_ID"]
-WECHAT_APP_SECRET = os.environ["WECHAT_APP_SECRET"]
+WECHAT_TOKEN = os.environ.get('WECHAT_TOKEN', '')
+WECHAT_APP_ID = os.environ.get('WECHAT_APP_ID', '')
+WECHAT_APP_SECRET = os.environ.get('WECHAT_APP_SECRET', '')
 WECHAT_USER_OPENID = os.environ.get("WECHAT_USER_OPENID", "")  # 你的微信 openid
 
 _access_token: str | None = None
@@ -259,3 +259,4 @@ async def health():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
